@@ -3,11 +3,17 @@
 import sqlite3
 from contextlib import closing
 from smbus2 import SMBus
+from pathlib import Path
+import os
 
 dbname = 'atmos.db'
+dbfile = str(Path(os.path.abspath(__file__)).parents[0]) + '/' + dbname
+
+print(dbfile)
+
 machine_name = '001'
 
-bus_number  = 1
+bus_number = 1
 i2c_address = 0x76
 
 bus = SMBus(bus_number)
@@ -19,7 +25,7 @@ digH = []
 t_fine = 0.0
 
 def write_db(temperature, humidity, air_pressure):
-  with closing(sqlite3.connect(dbname)) as conn:
+  with closing(sqlite3.connect(dbfile)) as conn:
     c = conn.cursor()
 
     sql = '''
@@ -36,7 +42,7 @@ def write_db(temperature, humidity, air_pressure):
 
 
 def writeReg(reg_address, data):
-  bus.write_byte_data(i2c_address,reg_address,data)
+  bus.write_byte_data(i2c_address, reg_address, data)
 
 def get_calib_param():
   calib = []
