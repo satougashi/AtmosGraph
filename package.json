@@ -1,0 +1,23 @@
+{
+  "name": "atmos_graph",
+  "version": "1.0.0",
+  "description": "I would like to check the temperature, humidity, and atmospheric pressure changes at home using a Raspberry Pi.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/satougashi/AtmosGraph.git"
+  },
+  "author": "yoc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/satougashi/AtmosGraph/issues"
+  },
+  "homepage": "https://github.com/satougashi/AtmosGraph#readme",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "sqlite3": "^4.2.0"
+  }
+}

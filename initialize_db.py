@@ -16,7 +16,9 @@ with closing(sqlite3.connect(dbname)) as conn:
       temperature REAL,
       humidity REAL,
       air_pressure REAL,
-      created_at DEFAULT CURRENT_TIMESTAMP
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP CHECK(
+        created_at like '____-__-__ __:__:__'
+      )
     )'''
 
   c.execute(create_table)
