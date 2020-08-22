@@ -1,1 +1,1 @@
-*/5 * * * * ~/AtmosGraph/save_atmos.sh
+*/1 * * * * ~/AtmosGraph/save_atmos.sh
