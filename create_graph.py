@@ -22,7 +22,7 @@ def get_data():
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
 
-    sql = 'select * from atmospheres order by created_at desc limit 25200;'
+    sql = 'select * from atmospheres order by created_at desc limit 3600;'
 
     c.execute(sql)
 
@@ -44,6 +44,7 @@ def create_graph(data):
     time += datetime.timedelta(hours=time_diff)
     date.append(time)
 
+  mindate = date[-3600] if len(date) > 3600 else date[-1 * (len(date))]
   # temp_graph setting
   temp_graph = figure(
     title="Temperature",
@@ -52,7 +53,7 @@ def create_graph(data):
     x_axis_label='date',
     x_axis_type='datetime',
     y_axis_label='temperature(℃)',
-    x_range=[date[-3600], date[-1]]
+    x_range=[mindate, date[-1]]
    )
   #temp_graph.y_range.start = min(temperature) if min(temperature) < 0 else 0
   temp_graph.line(date, temperature, line_width=1, legend_label="temperature", color="limegreen")

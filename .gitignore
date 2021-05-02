@@ -1,2 +1,5 @@
 atmos.db
-node_modules
+atmos.db*
+__pycache__
+nohup.out
+templates/graph.html
